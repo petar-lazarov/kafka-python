@@ -620,3 +620,14 @@ def test_lookup_coordinator_failure(mocker, coordinator):
                         return_value=Future().failure(Exception('foobar')))
     future = coordinator.lookup_coordinator()
     assert future.failed()
+
+
+def test_ensure_active_group(mocker, coordinator):
+    coordinator._subscription.subscribe(topics=['foobar'])
+    mocker.patch.object(coordinator, 'coordinator_unknown', return_value=False)
+    mocker.patch.object(coordinator, '_send_join_group_request', return_value=Future().success(True))
+    def rejoin_done(*args):
+        mocker.patch.object(coordinator, 'need_rejoin', return_value=False)
+    mocker.patch.object(coordinator, '_on_join_complete', side_effect=rejoin_done)
+
+    coordinator.ensure_active_group()
