@@ -1,7 +1,17 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+strategy:
+  matrix:
+    Python36:
+      python.version: '3.6'
+
 steps:
+  # Set the UsePythonVersion task to reference the matrix variable for its Python version
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+    architecture: 'x64'
 - script: printenv
 - script: |
     python -m pip install --upgrade pip && pip3 install --upgrade setuptools gnureadline
