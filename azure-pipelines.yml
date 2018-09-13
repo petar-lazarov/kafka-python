@@ -3,6 +3,6 @@ pool:
 
 steps:
 - script: printenv
-- script: pip install tox
-- script: pip install .
-- script: tox -e py -- --junit-xml=testresults.xml
+- script: |
+  pip install tox
+  tox -e py -- --junit-xml=testresults.xml
