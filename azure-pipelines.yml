@@ -25,4 +25,4 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/testresults.xml'
+    testResultsFiles: 'testresults.xml'
