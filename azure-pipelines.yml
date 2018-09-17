@@ -28,4 +28,4 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: 'testresults.xml'
-  script: printenv
+- script: printenv
