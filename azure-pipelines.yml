@@ -30,7 +30,7 @@ steps:
   displayName: 'tox'
 - script: |
     curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux-dev.tgz | sudo tar -zxvf- -C /usr/local/bin
-    testspace config url open.stridespace.com
+    testspace config url e18dc52ec2bceda7689d7e5bfed6791e26d449f8:@open.stridespace.com
     testspace [Python-$(python.version)]testresults.xml{test}
   displayName: 'Testspace'
 
