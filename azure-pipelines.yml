@@ -5,6 +5,8 @@ strategy:
   matrix:
     Python36:
       python.version: '3.6'
+    Python27:
+      python.version: '2.7'
 
 steps:
   # Set the UsePythonVersion task to reference the matrix variable for its Python version
@@ -30,4 +32,3 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: 'testresults.xml'
-- script: printenv
