@@ -28,6 +28,11 @@ steps:
     pip install tox
     tox -e py -- --junit-xml=testresults.xml
   displayName: 'tox'
+- script: |
+    mkdir -p $HOME/bin
+    curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $HOME/bin
+    testspace config url open.stridespace.com
+    testspace [Python-$(python.version)]testresults.xml{test}
 
 - task: PublishTestResults@2
   inputs:
