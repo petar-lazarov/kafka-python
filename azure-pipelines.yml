@@ -15,7 +15,7 @@ steps:
     versionSpec: '$(python.version)'
     architecture: 'x64'
 - script: |
-    sudo apt-get update && sudo apt-get install -y libsnappy-dev 
+    sudo apt-get update && sudo apt-get install -y libsnappy-dev
   displayName: 'apt update and install'
 - script: |
     printenv
@@ -30,7 +30,7 @@ steps:
   displayName: 'tox'
 - script: |
     curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux-dev.tgz | sudo tar -zxvf- -C /usr/local/bin
-    testspace config url e18dc52ec2bceda7689d7e5bfed6791e26d449f8:@open.stridespace.com
+    testspace config url a360f4d98d008ec2e9266b8c093b0d2f12024d9c:@8803866e.ngrok.io
     testspace [Python-$(python.version)]testresults.xml{test}
   displayName: 'Testspace'
 
